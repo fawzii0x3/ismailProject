@@ -1,3 +1,4 @@
 *.exe
+.main.c.un~
 .vscode
-*.c*
+main.c~
