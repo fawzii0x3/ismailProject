@@ -11,19 +11,21 @@ void addUser(char newUser[]){
 void editUser(){}
 void removeUser(char *tab,int *startpoint){
   char nom[STRLENGTH];
-  int found = 0;
+  int found = 0,comp=0;
   printf("donne le nom du l utilusateur  a effacer:");
   scanf("%s",nom);
-//   for(int i = 0; i < (*startpoint); i++){
-//     found = (*nom)==(*(tab +(i * STRLENGTH)));
-//     if (found)
-//     {
-//       printf("%s est effacer avec succee",nom);
-//     }
-//   }
-// if(!found){
-//   printf("introuvable");
-// }
+  for(int i=0;i<(*startpoint);i++){
+      printf("%s",tab +(STRLENGTH * i));
+      comp = strcmp(tab +(STRLENGTH * i),nom);
+      if(comp == 0 ){
+          printf("founded\n");
+      }
+      printf("%d\n",comp);
+  }
+  if(comp >0){
+      printf("nyes\n");
+  }
+  scanf("%s",nom);
 }
 void listUsers(){}
 void findUser(){}
@@ -65,7 +67,7 @@ void gestionDesAdherents(char *tab,int *startpoint){
             }
             break;
           case 2:
-            for(int i = 0; i < (*startpoint); i++){
+            for(int i = 0; i < (*startpoint)-1; i++){
             printf("%s\n",tab +(i * STRLENGTH));
             }
             listUsers();
@@ -104,10 +106,13 @@ void main(){
           case 3:
             gestionDesReservations();
             break;
-          default:
+          case 4:
             printf("Thanks for using the app!");
             test = 0;
             break;
+          default:
+          printf("invalid!!");
+          break;
       }
   }
 }
